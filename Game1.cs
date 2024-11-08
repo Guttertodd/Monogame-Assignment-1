@@ -8,7 +8,8 @@ namespace Monogame_Assignment__1
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Texture2D hogTexture;
+        Texture2D hogTexture, backgroundTexture;
+        
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -19,7 +20,7 @@ namespace Monogame_Assignment__1
         protected override void Initialize()
         {
             // TODO: Add your initialization logic here
-            _graphics.PreferredBackBufferWidth = 800;
+            _graphics.PreferredBackBufferWidth = 600;
             _graphics.PreferredBackBufferHeight = 600;
             _graphics.ApplyChanges();
 
@@ -31,7 +32,9 @@ namespace Monogame_Assignment__1
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
+            backgroundTexture = Content.Load<Texture2D>("background");
             hogTexture = Content.Load<Texture2D>("Hog");
+            
         }
 
         protected override void Update(GameTime gameTime)
@@ -50,8 +53,11 @@ namespace Monogame_Assignment__1
 
             // TODO: Add your drawing code here
             _spriteBatch.Begin();
-
-            _spriteBatch.Draw(hogTexture, new Vector2(10,10), Color.White);
+            _spriteBatch.Draw(backgroundTexture, new Rectangle(0,0, 600, 600), Color.White);
+            _spriteBatch.Draw(hogTexture, new Vector2(25,25), Color.White);
+            _spriteBatch.Draw(hogTexture, new Vector2(25, 150), Color.White);
+            _spriteBatch.Draw(hogTexture, new Vector2(25, 275), Color.White);
+            _spriteBatch.Draw(hogTexture, new Vector2(25, 400), Color.White);
 
             _spriteBatch.End();
             base.Draw(gameTime);
